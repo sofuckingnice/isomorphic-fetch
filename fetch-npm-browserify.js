@@ -3,4 +3,6 @@
 //
 // Return that as the export for use in Webpack, Browserify etc.
 require('whatwg-fetch');
-module.exports = self.fetch.bind(self);
+if (typeof window === 'object' && window.fetch) {
+    module.exports = window.fetch.bind(window);
+}
